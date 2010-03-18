@@ -1,0 +1,150 @@
+\section{Basic Definitions}
+
+\begin{dfn}
+  Let $R$ be a ring. The a \emph{left $R$-module} is an abelian group $M$ together with an operation
+  \[
+  R \times M \too M, \quad (r,m) \longmapsto r\cdot m \quad \text{(scalar product)}
+  \]
+  such that for all $r,r' \in R$ and $m, m' \in M$:
+  \begin{enumerate}
+  \item $(r + r')m = rm + r'm$
+  \item $r(m + m') = rm + rm'$
+  \item $r(r'm) = (rr')m$
+  \item $1_R m = m$.
+  \end{enumerate}
+  A \emph{right $R$-module} is defined similarly with scalar multiplication $R \times M \to M$ given by $(m,r) \mapsto mr$.
+\end{dfn}
+
+Suppose $M$ is a left $R$-module. Then we cannot define a right $R$-module structure by $mr = r m$. Such multiplication would not satisfy property 3 above. However, if $R$ is commutative then right and left $R$-modules are equivalent, so we need not distinguish between right and left.
+
+Notice that $R$-modules obey the following properties:
+\begin{enumerate}
+\item $0 m = 0 = r 0$
+\item $-(rm) = (-r)m = r(-m)$.
+\end{enumerate}
+
+\begin{eg}
+  Some common modules:
+  \begin{enumerate}
+  \item If $R$ is a field, then an $R$-module is a \emph{vector space} over $R$.
+  \item If $R = \Z$ and $M$ is a $\Z$-module, then $M$ has a unique scalar product given by
+    \[
+    1 m = 1,\ 2m = m + m,\ 3m = m + m + m,\ldots.
+    \]
+    Conversely, every abelian group has a unique structure as a $\Z$-module. Hence there is a correpondence
+    \[
+    \Z \text{-modules} \longleftrightarrow \text{abelian groups}.
+    \]
+  \item A (left)\sidenotemark{Whenever the word (left) or appears in parantheses, an analogous statement also holds for (right) modules.} ideal $I \subset R$ is a (left) $R$-module because $x \in I$ and $r \in R$ implies that $rx \in I$.
+  \item Let $f: R \to S$ be a ring homomorphism and $M$ a (left) $S$-module. Then $M$ has the structure of a (left) $R$-module via $rm = f(r)m$.
+  \item Let $A$ be an abelian group, and let $R = \End(A)$. Then $A$ is a left $R$-module by $r a = r(a)$.  
+  \end{enumerate}
+\end{eg}
+
+Combining the last two examples, we can see that any abelian group $M$ can be given left\sidenotemark{This only works for \emph{left} $R$-modules... We'll talk about right $R$-modules in a minute.} $R$-module structure by defining a ring homomorphism $f : R \to \End(M)$ by defining $rm = f(r)(m)$. In fact, the converse also holds: Let $M$ be a left $R$-module. Then $M$ is also a left module over $\End(M)$. Thus we have some ring homomorphism
+\[
+f : R \too \End(M).
+\]
+Therefore, the $R$-module structure on $M$ is the pullback via $f$ of the $End(M)$-module structure on $M$. Thus we have
+\[
+\fbox{\text{left } $R$ \text{ modules } $M$} \longleftrightarrow \fbox{\text{ring homomorphisms } $f : R \to \End(M)$}
+\]
+
+There is a similar story with \emph{right} $R$-modules, except that the homomorphism changes direction: Giving $M$ a right $R$-module structure is equivalent to defining an ring homomorphism $\varphi : \End(M) \to R$.
+
+\begin{dfn}
+  Let $M$ and $N$ be (left) $R$-modules. Then an \emph{$R$-module homomorphism} is a group homomorphism
+  \[
+  \varphi : M \too N
+  \]
+  such that $\varphi(rm) = r \varphi(m)$ for all $r \in R$, $m \in M$. We denote the set of all such homomorphisms by
+  \[
+  \Hom_R(M,N) = \set{R\text{-module homomorphisms} M \to N}.
+  \]
+\end{dfn}
+
+Notice that $Hom_R(M,N)$ has the natural structure of an abelian group under pointwise addition. 
+
+As one would expect, left $R$-modules form a category $\Mod R$ where the objects are $R$-modules and the morphisms are $R$-module homomorphisms. Similarly, we have the category $\rMod R$ of right $R$-modules.
+
+\begin{eg}
+  Module categories
+  \begin{enumerate}
+  \item If $R = F$ a field, then $\Mod F$ is the category of vector spaces over $F$ where the homomorphisms are linear maps.
+  \item If $R$ is commutative, then $\Mod R \simeq \rMod R$.
+  \item For any ring $R$, $\Mod R \simeq (\rMod R)^{o}$.
+  \item $\Mod \Z$ is isomorphic to the category $\Ab$ of abelian groups. In particular, $\Z$-module homomorphism correspond to (abelian) group homomorphisms.
+  \end{enumerate}
+\end{eg}
+
+\begin{dfn}
+  Let $M$ be a (left) $R$-module. Then a subgroup $N \subset M$ is a \emph{(left) $R$-submodule} if
+  \[
+  rn \in N \quad \text{for all} \quad r \in R,\ n \in N.
+  \]
+\end{dfn}
+
+\begin{eg}
+  Submodules:
+  \begin{enumerate}
+  \item $0 \subset M$, $M \subset M$.
+  \item Given a family of submodules $\set{N_\alpha}$ the intersection $\bigcap N_\alpha$ is a submodule.
+  \item Also
+    \[
+    \sum_{\alpha} N_\alpha = \set{\sum n_\alpha, n_\alpha \in N_\alpha \st \text{a.e. } n_\alpha = 0}
+    \]
+    is the smallest submodule of $M$ containing the union $\bigcup U_\alpha$.
+  \item Given an $R$-module homomorphism $f : M \to M'$, the sets
+    \[
+    \ker f = \set{m \in M \st f(m) = 0} \quad \text{and} \quad \im f
+    \]
+    are submodules of $M$ and $M'$ respectively.
+  \end{enumerate}
+\end{eg}
+
+\begin{dfn}
+  Let $M$ be a (left) $R$-module and $N$ a submodule of $M$. Then we can form the \emph{factor module}
+  \[
+  M / N = \set{m + N \st m \in M}.
+  \]
+  $M/N$ has the structure of a (left) $R$-module via\sidenotemark{One should verify that this definition is correct, i.e., does not depend on choice of coset representative.}
+  \[
+  r(m + N) = rm + N.
+  \]
+\end{dfn}
+
+As was the case with groups and rings, we have the canonical projection map $\pi : M \to M/N$ by $\pi(m) = m + N$. Then we have the following isomorphism theorems for (left) $R$-modules.
+
+\begin{thm}
+  Isomorphism theorems for modules. 
+  \begin{enumerate}
+  \item Let $f : M \to M'$ be an $R$-module homomorphism. Then
+    \[
+    M / \ker f \simeq \im f.
+    \]
+  \item Let $M$ and $P$ be submodules in $M$. Then
+    \[
+    (N + P)/N \simeq P/(P \cap N).
+    \]
+  \item Let $P \subset N \subset M$ be submodules. Then
+    \[
+    (M/P)/(N/P) \simeq M / N.
+    \]
+  \end{enumerate}
+\end{thm}
+
+The proofs of these theorems are almost identical to the proofs of the corresponding isomorphism theorems for groups.
+
+\begin{dfn}
+  A (left) $R$-module $M$ is \emph{finitely generated} if there are elements $m_1, \ldots, m_n \in M$ such that every $m \in M$ can be written
+  \[
+  m = r_1 m_1 + \ldots, r_n m_n \quad \text{for some} \quad r_i \in R. 
+  \]
+  Equivalently, we have
+  \[
+  M = Rm_1 + \cdots + Rm_n.
+  \]
+\end{dfn}
+
+%% Finished to page 72 in notes.
+

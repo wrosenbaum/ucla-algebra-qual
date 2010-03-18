@@ -1,0 +1,110 @@
+\section{Basic definitions and theorems}
+
+\begin{dfn}
+  A \emph{ring} $R$ is a set $R$ together with two binary operations, $+$ and $\cdot$ such that
+  \begin{enumerate}
+  \item $(R, +)$ is an abelian group
+  \item $(xy)z = x(yz)$ for all $x,y,z \in R$ (associativity)
+  \item $x(y+z) = xy + xz$ for all $x,y,z \in R$ (distributivity)
+  \item there exists $1 \in R$ such that $1 x = x 1 = x$ for all $x \in R$ (identity).
+  \end{enumerate}
+\end{dfn}
+
+We can easily verify that $0 x = x 0 = 0$ and $(-x)y = x (-y) = - xy$ for all $x, y \in R$. For the first, compute
+\[
+0 x = (0 + 0)x = 0 x + 0 x \implies 0 = 0 x
+\]
+and the second,
+\[
+0 = 0 y = (x + (-x))y = x y + (-x)y \implies - x y = (-x) y.
+\]
+If $R$ further satisfies $xy = yx$ for all $x,y \in R$, we say that $R$ is \emph{commutative}. 
+
+An element $x \in R$ is \emph{invertible} if there exists $y \in R$ such that $xy = y x = 1$. Notice that $y$ is uniquely determined by $x$ so we may write (without loss of generality) $y = x^{-1}$. We denote the \emph{group of invertible elements of} $R$ by $R^\times$. For example $\Z^\times = \set{\pm 1}$. We say that $R$ is a \emph{division ring} if $R^\times = R \setminus \set 0$, and $R$ is a \emph{field} if $R$ is a commutative division ring. 
+
+An element $x \in R$ is a \emph{zero-divisor} if $x \neq 0$, but $xy = 0$ for some $y \in R$, $y \neq 0$. An \emph{integral domain} (or just a \emph{domain}) is a nonzero commutative ring $R$ having no zero-divisors. Notice that every field is an integral domain: if $x,y \in F$ a field with $xy = 0$ and $x \neq 0$ then compute
+\[
+0 = x^{-1} 0 = x^{-1} (xy) = 1 y = y.
+\]
+\begin{eg}
+  Some rings:
+  \begin{enumerate}
+  \item $0 = \set{0}$ the zero ring
+  \item $\Z$, $\Z^\times = \set{\pm 1}$
+  \item $\Q$, $\R$, $\Q$ are fields
+  \item $R$ a ring, $M_n(R) = $ ring of $n \times n$ matrices over $R$, $M_n(R)^\times = GL_n(R)$
+  \item $\Z / n \Z = \set{\bar 0, \bar 1, \ldots, \bar{n-1}}$, $(\Z / n \Z)^\times \set{\bar a \st (a,n)=1}$
+  \item $A$ an abelian group, $R = \End(A)$
+  \item $R$ a ring, $R[X]$ is the polynomial ring consisting of elements
+    \[
+    f = a_0 + a_1 X + \cdots + a_n X^n, \quad a_i \in R
+    \]
+    where multiplication and addition are as usual. In variables $X_1, \ldots, X_m$ we have monomials
+    \[
+    X_{i_1}^{k_1} \cdots X_{i_m}^{k_m} \quad k_1, \ldots, k_m \geq 0.
+    \]
+    Then $R[X_1, \ldots, X_m]$ is the ring of polynomials in commuting variables and $R\angleb{X_1, \ldots, X_m}$ is the ring of polynomials in non-commuting variables. Notice that $R[X] = R\angleb{X}$, but this is only true for $m = 1$. We can further take $S$ to be any set form $R[S]$ and $R\angleb{S}$, but elements in these polynomial rings are finite linear combinations of finite monomials.
+  \end{enumerate}
+\end{eg}
+
+\begin{dfn}
+  Let $R$ and $S$ be rings. Then a map $f : R \to S$ is a \emph{ring homomorphism} if it satifies:
+  \begin{enumerate}
+  \item $f(x + y) = f(x) + f(y)$
+  \item $f(xy) = f(x)f(y)$
+  \item $f(1_R) = 1_S$.
+  \end{enumerate}
+\end{dfn}
+
+Notice that ring homomorphism induce \emph{group} homomorphisms, $f : R^\times \to S^\times$. 
+
+\begin{eg}
+  Ring homomorphisms:
+  \begin{enumerate}
+  \item $\id_R : R \to R$, $x \mapsto x$
+  \item $f : \Z \to \Z / n \Z$, $f(a) = \bar a$
+  \item composition of ring homomorphisms is again a homomorphism
+  \end{enumerate}
+\end{eg}
+
+As one would expect, $\Rings$ forms a category where the objects are rings and the morphisms are ring homomorphisms. Notice that $\Mor(S,R)$ can be empty.\sidenotemark{This is not true in the category of groups, for there is always (at least) the trivial homomorphism between any two groups.} For example there are no homomorphisms $\Q \to \Z$ -- where could we map $1/2$? In $\Rings$, $0$ (the zero ring) is the final object and $\Z$ is the initial object. 
+
+Consider the polynomial ring $\Z[X]$. How do we define a map $f : \Z[X] \to \R$? If we have $f(X) = r$, then $f(X^n) = r^n$, so this assignment completely determines the map $f$:
+\[
+f(a_0 + \cdots + a_n X^n) = a_0 \cdot 1_R + \cdots + a_n r^n.
+\]
+Hence $f(g(x)) = g(r)$. Therefore, to define a homomorphism $f : \Z[X] \to \R$ is merely to choose a single element $r \in R$. Similarly, to define a homomorphism $f : Z\angleb{X_1, \ldots, X_n} \to R$ is to choose an $n$-tuple of elements of $R$. If $R$ is commutative, the same is true for $Z[X_1, \ldots, X_n]$. Further, for any set $S$, a homomorphism $\Z\angleb{S} \to R$ is determined uniquely by a map of sets $S \to R$. Thus
+\[
+\Hom_{\Rings}(\Z\angleb{S}, R) \simeq \Hom_{\Sets}(S,R).
+\]
+Therefore, $S \longmapsto \Z\angleb{S}$ is the left adjoint of the the forgetful function $\Rings \too \Sets$. In the case of commuative rings, $\Z[S]$ plays the role of $\Z\angleb{S}$.
+
+\begin{dfn}
+  Let $S$ be a ring. A subset $R \subset S$ is a \emph{subring} if $R$ satisfies
+  \begin{enumerate}
+  \item $-x \in R$ for all $x \in R$
+  \item $x + y \in R$ for all $x,y \in R$
+  \item $xy \in R$ for all $x, y \in R$
+  \item $1 \in R$.
+  \end{enumerate}
+\end{dfn}
+
+Notice that $R$ is a ring and $R \hookrightarrow S$ is a homomorphism. 
+
+\begin{eg}
+  Subrings:
+  \begin{enumerate}
+  \item $\Z \subset \Q \subset \R \subset \C$
+  \item We have the inclusion
+    \[
+    R \simeq \set{
+      \begin{pmatrix}
+        * & 0\\
+        0 & 0
+      \end{pmatrix}
+    }
+    \subset M_2(R)
+    \]
+    However, this is \emph{not} a subring of $M_2(R)$ because the former does note share its identity with $M_2(R)$.
+  \end{enumerate}
+\end{eg}

@@ -1,0 +1,81 @@
+\section{Finite Fields}
+
+\begin{dfn}
+	Let $F$ be a field and $\varphi : \Z \to F$ the (unique) ring homomorphism $n \mapsto n \cdot 1$. Then $\ker \varphi = n \Z$ for some $n \geq 0$. We call $n$ the \emph{characteristic of } $F$, denoted $\chr F$.
+\end{dfn}
+
+\begin{rem}
+	Notice that $\Z / \ker \varphi = \Z / n \Z$ must be a domain, hence $n = 0$ or $n$ is a prime. If $\chr F = 0$, then $\Z \hookrightarrow F$ extends to $\Q \hookrightarrow F$ by the universal property of localization. Therefore, $F$ contains $\Q$ as a subfield, and in fact $\Q$ is the smallest subfield of $F$. If $\chr F = p$ a prime, then $\Z / p \Z \hookrightarrow F$, so $\Z / p \Z$ is the smallest subfield in $F$.
+\end{rem}
+
+\begin{dfn}
+	The smallest subfield of a field is called the \emph{prime subfield}.
+\end{dfn}
+
+\begin{dfn}
+	Let $f \in F[X]$ for a field $F$,
+	\[
+		f(X) = a_n X^n + \cdots + a_1 X + a_0.
+	\]
+	Then we define the \emph{derivative of} $f$ to be
+	\[
+		f'(X) = n a_n X^{n-1} + \cdots + a_1.
+	\]
+\end{dfn}
+
+\begin{eg}
+	If $\chr F = p$ then $(X^p - 1)' = p x^{p-1} = 0$.
+\end{eg}
+
+\begin{dfn}
+	Let $f \in F[X]$ and suppose $\alpha \in F$ is a root of $F$ so that
+	\[
+		f(X) = (X - \alpha) \cdot g \quad \text{for some} \quad g \in F[X].
+	\]
+	Then we say that $\alpha$ is a \emph{simple root of } $f$ if $g(\alpha) \neq 0$.\sidenotemark{Note that this is true iff $f$ is not divisible by $(X-\alpha)^2$.}
+\end{dfn}
+
+\begin{lem}
+	Let $f \in F[X]$ and $\alpha \in F$ a root of $F$. Then $\alpha$ is a simple root if and only if $f'(\alpha) \neq 0$.
+\end{lem}
+\begin{proof}
+	Write $f = (X - \alpha) \cdot g$. Then $f' = (X - \alpha) \cdot g' + g$. Then
+	\[
+		f'(\alpha) = g(\alpha) = 0 \iff \alpha \text{ is simple.}
+	\]
+\end{proof}
+
+\begin{cor}
+	If $(f,f') = 1$ then $f$ has no multiple roots.
+\end{cor}
+
+Let $F$ be a finite field. Then we must have $\chr F = p > 0$, implying that we have a field extension
+\[
+	\Z / p \Z \hookrightarrow F.
+\]
+Then let $n = [F : \Z / p\Z]$ and suppose $x_1, \ldots, x_n$ is a basis for $F \big / (\Z / p\Z)$. The for $x \in F$, we can write
+\[
+	x = \sum a_i x_i \quad \text{with} \quad a_i \in \Z / p\Z
+\]
+which implies that $\abs{F} = p^n$.
+
+\begin{thm}
+	For any prime $p$ and integer $n \geq 1$, there exists a unique (up to isomorphism) finite field $F$ with $p^n$ elements.
+\end{thm}
+\begin{proof}
+	Existence: let $q = p^n$ and $f = X^q - X \in F[\Z / p\Z]$. Then $f' = q X^{q-1} - 1 = -1$ implying that $(f,f') = 1$ so $f$ has no multiple roots. Let $K \big/ (\Z / p\Z)$ be a splitting field of $f$. Then $f$ has $q$ roots in $K$, as it has no multiple roots. Let $F$ be the set of roots of $f$, $\abs{F} = q$. Then we can easily verify that $F$ is a field: let $a, b \in F \subset K$. Then we have $a^q = a$ and $b^q = b$. Thus
+	\begin{enumerate}
+		\item $(a + b)^q = a^q + b^q = a + b \implies a+b \in F$
+		\item $(ab)^q = ab \implies ab\in F$
+		\item $(a^{-1})^q = (a^q)^{-1}=a^{-1} \implies a^{-1} \in F$
+	\end{enumerate}
+	Uniqueness: We claim that if $F$ is a finite field with $\abs{F} = q$, then $F$ is a splitting field of $f = X^q - X$ over $\Z / p\Z$. To see this, note that $\abs{F^\times} = q-1$ and $F^\times$ is a group. Therefore, for all $a \in F^\times$ we have $a^{q-1} = 1$, implying that $a^q = a$ for all $a \in F$. Therefore, $a$ is a root of $f$, so $f$ is split over $F$. Hence
+	\[
+		F = (\Z / p \Z)(\alpha_1, \ldots, \alpha_q) \quad \text{since} \quad F = \set{\alpha_1, \ldots, \alpha_q}.
+	\]
+	Therefore, $F$ is a splitting field for $f$.
+\end{proof}
+
+\begin{ntns}
+	We denote the finite field with $q$ elements by $\Fq$.
+\end{ntns}

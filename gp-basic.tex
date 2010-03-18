@@ -1,0 +1,27 @@
+\section{Basic Definitions and Theorems}
+
+\begin{dfn}
+  A \emph{group} $G$ is a set along with a binary operation $\cdot : G \times G \to G$ satisfying
+  \begin{myenum}
+  \item Associativity: $(xy)z = x(yz)$ for all $x,y,z \in G$
+  \item Identity: there exists $e \in G$ such that $e x = x e = x$ for all $x \in G$
+  \item Inverses: for every $x \in G$ there exists $x^{-1} \in G$ such that $x x^{-1} = x^{-1} x = e$.
+  \end{myenum}
+  If $G$ additionally satisfies $xy = yx$ for all $x,y \in G$ we say that $G$ is \emph{abelian}.
+\end{dfn}
+
+The identity and inverses are unique. To see this, compute $e = e e' = e'$. Also, if $y$ and $y'$ are both inverses of $x$ then
+\[
+y = ye = y(xy') = (yx)y' = ey' = y'.
+\]
+
+\begin{eg}
+  If $x^2 = e$ for all $x \in G$ then $G$ is abelian.
+\end{eg}
+\begin{proof}
+  Let $x, y \in G$. Then we can write
+  \[
+  xy = x^{-1} y^{-1} = (yx)^{-1} = yx
+  \]
+  so $G$ is abelian.
+\end{proof}

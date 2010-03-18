@@ -1,0 +1,68 @@
+\section{Ideals}
+
+\begin{dfn}
+  Let $R$ be a ring. A subset $I \subset R$ is called a \emph{left ideal} in $R$ if
+  \begin{enumerate}
+  \item $0 \in I$
+  \item $a + b \in I$ if $a, b \in I$
+  \item $x a \in I$ if $a \in I$ and $x \in R$
+  \end{enumerate}
+  $I$ is a \emph{right ideal} if we have $a x \in I$ whenever $a \in I$ and $x \in R$. If $I$ is both a left and a right ideal, we will simply call it an \emph{ideal}.
+\end{dfn}
+Notice that $(I, +)$ is a subgroup of $(R, +)$ because $-1 \in R$. 
+
+\begin{eg}
+  Ideals:
+  \begin{enumerate}
+  \item $0 = \set 0 \subset R$ (zero ideal), $R \subset R$ (whole ring is an ideal)
+  \item $a \in R$, $I = R a = \set{x a \st x \in R}$ is the \emph{principal left ideal}. Similarly $a R$ is the \emph{principal right ideal}.
+  \item the intersection of left ideals is an ideal
+  \item if $I$ is a (left) ideal and $I \cap R^\times \neq \varnothing$ then $I = R$.
+  \end{enumerate}
+\end{eg}
+
+Let $I$ and $J$ be ideals. Then $I \cap J$ is an ideal and $I + J$ is an ideal. In fact, $I + J$ is the smallest ideal containing $I \cup J$. If $I$ is a two-sided ideal, then we may form
+\[
+R / I = \set{(a + I) \st a \in r}.
+\]
+We can easily verify that $R / I$ is a ring and $\pi : R \to R / I$ given by $\pi(a) = a + I$ is a surjective ring homomorphism with $\ker \pi = I$. In generaly kernels of ring homomorphisms are ideals and images are subrings. Suppose $f : R \to S$ is a ring homomorphism. Then we have the following isomorphism,
+\[
+R / \ker f \simeq \im f.
+\]
+If $J$ is a left ideal in $S$ and $f$ is surjective then $f^{-1}(J)$ is an ideal in $R$ containing $ker f$. Thus there is a correspondence between left ideals in $S$ and left ideals in $R$ containing $\ker f$.
+
+\begin{eg}
+  Ideals and quotients:
+  \begin{enumerate}
+  \item All ideals in $\Z$ are of the form $n \Z$ for some $n \in \Z$
+  \item $\R[X] / \angleb{X^2 + 1} \simeq \C$.
+  \end{enumerate}
+\end{eg}
+
+Given rings $R_1, \ldots, R_n$, we can form the product $R = R_1 \times \cdots \times R_n$ as the usual cartesian product. Then
+\[
+1_R = (1_{R_1}, \ldots, 1_{R_n}).
+\]
+We define $e_i = (0, \ldots, 0, 1_{R_i}, 0, \ldots, 0)$. Notice that the $e_i$ satisfy
+\begin{enumerate}
+\item $e_i^2 = e_i$ (idempotent)
+\item $e_i e_j = 0$, $i \neq j$ (orthogonality)
+\item $e_i x = x e_i$ for all $x \in R$
+\item $e_1 + \cdots + e_n = 1_R$.
+\end{enumerate}
+Consider the map $f : R_1 \times \cdots \times R_n \to R$ given by $f(x_1, \ldots, x_n) = x_1 + \cdots x_n$. We can easily verify that $f$ is an isomorphism of rings, so internal and external products are isomorphic (as was the case with groups).
+
+If $I \subset R$ is an ideal then we say $x \equiv y \mod I$ if $x - y \in I$.\sidenotemark{Notice that this is true iff $x + I = y + i \in R/I$.}
+
+\begin{thm}
+  (Chinese Remainder Theorem). Let $R$ be a ring, and $I_1, \ldots, I_n$ two-sided ideals in $R$ such that $I_i + I_j = R$ for all $i \neq j$. Then for all $a_1, \ldots, a_n \in R$ there exists $a \in R$ such that $a \equiv a_i \mod I_i$ for all $i$.
+\end{thm}
+\begin{proof}
+  By induction on $n$. If $n = 1$ then the claim is trivial. For $n = 2$, since $I_1$ and $I_2$ are coprime (i.e., $I_1 + I_2 = R$) we can find $x_1 \in I_1$ and $x_2 \in I_2$ such that $x_1 + x_2 = a_1 - a_2$. Then let $a = a_1 - x_2 = a_2 + x_1$. Then $a \equiv a_i \mod I_i$ for $i = 1,2$. 
+
+  Now for the inductive step, $n -1 \implies n$. By induction, we can find $b \in R$ with $b \equiv a_i \mod I_i$ for $i = 1, \ldots, n-1$. We claim that
+  \[
+  (I_1 \cap \cdots \cap I_{n-1}) + I_n = R.
+  \]
+  To see this, 
+\end{proof}
