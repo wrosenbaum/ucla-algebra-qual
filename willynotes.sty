@@ -1,0 +1,107 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{willynotes}
+
+\usepackage{graphicx}
+%mathrsfs, enumerate, setspace, dingbat, chemarrow}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{marginnote}
+%\input xy
+%\xyoption{all}
+
+\makeatletter
+\newcommand{\course}[1]{
+	\def\@course{#1}
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fonts
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \renewcommand{\encodingdefault}{T1}
+% % Make Garamond default roman font
+% \renewcommand{\rmdefault}{ugm}
+% % Make Helvetica default sans serif font
+% \renewcommand{\sfdefault}{phv}
+% \selectfont
+% \RequirePackage[T1]{fontenc}
+
+%% Make the standard roman font Garamond with
+%% mathdesign mathematics.
+\usepackage[garamond]{mathdesign}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Page Setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\settrimmedsize{11in}{8.5in}{*} 
+\setlength{\trimtop}{0pt} 
+\setlength{\trimedge}{\stockwidth} 
+\addtolength{\trimedge}{-\paperwidth} 
+\settypeblocksize{19cm}{12.5cm}{*} 
+\setulmargins{4cm}{*}{*} 
+\setlrmarginsandblock{1in}{2in}{*} 
+\setmarginnotes{20pt}{80pt}{\onelineskip} 
+\setheadfoot{\onelineskip}{2\onelineskip} 
+\setheaderspaces{*}{2\onelineskip}{*} 
+\checkandfixthelayout
+
+\makeatletter
+\makepagestyle{willyheadings}
+\makeevenhead{willyheadings}{\@author}{}{\@title}
+\makeoddhead{willyheadings}{\@title}{}{\@author}
+\makeheadrule{willyheadings}{\textwidth}{\normalrulethickness}
+\makeevenfoot{willyheadings}{}{- \thepage\ -}{}
+\makeoddfoot{willyheadings}{}{- \thepage\ -}{}
+\pagestyle{willyheadings}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Make Title
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\def\maketitle{%
+	\begin{center}
+		\HUGE\@title
+		
+		\vspace{14cm}
+		
+		\large\@author\\
+		Last Updated: \@date
+	\end{center}
+}
+\thispagestyle{empty}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sectioning
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% \def\thesection{\bfseries\LARGE\Roman{section}}%						         roman section numbers
+%% \newcommand{\sectioning}[1]{\clearpage\thispagestyle{empty}\hrule\par{\centering\bfseries\LARGE#1}\par\hrule}
+%% \setsechook{}
+%% \setsecindent{0pt}
+%% \setsecheadstyle{\sectioning}
+%% \setaftersecskip{10pt}
+
+%% \setbeforesubsecskip{15pt}
+%% \setsubsecindent{0pt}
+%% \setsubsecheadstyle{\bfseries}
+%% \setaftersubsecskip{8pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Misc
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\quote}[2]{
+\begin{flushleft}
+	\hspace{1cm}
+	\begin{minipage}{8cm}
+		{\itshape #1\par\vspace{0.25cm}\hfill - #2}
+	\end{minipage}
+\end{flushleft}
+\vspace{0.3cm}
+}

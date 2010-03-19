@@ -1,0 +1,229 @@
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{marginnote}
+%\input xy
+%\xyoption{all}
+\usepackage{pstricks, pst-node, pst-plot}
+%\usepackage{MnSymbol}
+\usepackage{mathrsfs}
+
+
+\newcommand{\sidenote}[1]{\marginnote{\raggedright\footnotesize #1}}
+\newcommand{\sidenotemark}[1]{${}^*$\marginnote{\raggedright\footnotesize\hspace{-0.3cm}$*$\hspace{0.1cm}#1}}
+
+% Common Sets
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Rn}{\mathbb{R}^{n}}
+\newcommand{\Rhat}{\widehat{\mathbb{R}}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Ccross}{\mathbb{C}^{\times}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Hp}{\mathcal{H}}
+\newcommand{\cgp}{S^1}
+\newcommand{\W}{\mathscr{W}}
+\newcommand{\K}{\mathscr{K}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Ca}{\mathcal{C}}
+\newcommand{\I}{\mathfrak{I}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\Gr}{\mathrm{Gr}}
+\newcommand{\Fi}{\mathbb{F}}
+\newcommand{\Aid}{A_{\mathrm{inf\, div}}}
+\newcommand{\Adiv}{A_{\mathrm{div}}}
+\newcommand{\Mor}{\mathrm{Mor}}
+\newcommand{\Cat}{\mathscr{C}}
+\newcommand{\Dcat}{\mathscr{D}}
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Sets}{\mathbf{Sets}}
+\newcommand{\Groups}{\mathbf{Groups}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\VS}{\mathbf{VS}}
+\newcommand{\Rings}{\mathbf{Rings}}
+\newcommand{\Mod}[1]{#1\!\!-\!\!\mathbf{Mod}}
+\newcommand{\rMod}[1]{\mathbf{Mod}\!\!-\!\!#1}
+\newcommand{\Fields}{\mathbf{Fields}}
+\newcommand{\Func}{\mathscr{F}}
+\newcommand{\Field}{\mathbb{F}}
+\newcommand{\Fq}{\mathbb{F}_q}
+
+% Math operators
+\DeclareMathOperator{\chr}{char}
+
+% Spaces of Functions
+\newcommand{\Sch}{\mathscr{S}}
+\newcommand{\D}{\mathscr{D}}
+\newcommand{\cinf}[1]{C^{\infty}(#1)}
+\newcommand{\cinfzero}[1]{C^{\infty}_0 (#1)}
+\newcommand{\cinfk}[1]{C^{\infty}_{K}(#1)}
+\newcommand{\ck}[1]{C^{k}(#1)}
+\newcommand{\cn}[2]{C^{#1}(#2)}
+\newcommand{\cnk}[1]{C^{n}_{K}(#1)}
+\newcommand{\czero}[1]{C^{0}(#1)}
+\newcommand{\lspace}[2]{\mathcal{L}^{#1}({#2})}
+\newcommand{\Lone}[1]{\lspace{1}{#1}}
+\newcommand{\Ltwo}[1]{\lspace{2}{#1}}
+\newcommand{\Lc}{L^2(\cgp)}
+\newcommand{\lts}{\ell^{2,s}}
+\newcommand{\ltms}{\ell^{2,-s}}
+
+% Mappings/Transformations
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\Fn}{\mathcal{F}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\der}[1]{\frac{d}{d #1}}
+\newcommand{\dern}[2]{\frac{d^{#1}}{d #2 ^{#1}}}
+\newcommand{\dernum}[2]{\frac{d #1}{d #2}}
+\newcommand{\pd}[1]{\frac{\partial}{\partial #1}}
+\newcommand{\pdnum}[2]{\frac{\partial\!#1}{\partial\!#2}}
+\newcommand{\pds}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pdn}[2]{\frac{\partial^{#1}}{\partial #2^{#1}}}
+\newcommand{\mpd}[2]{\frac{\partial^2}{\partial #1 \partial #2}}
+\newcommand{\ip}[2]{\left \langle #1, #2 \right \rangle}
+\newcommand{\iip}[2]{\left\langle\!\langle #1, #2 \right\rangle\!\rangle}
+\newcommand{\rint}[2]{\int_{\R} #1\, d#2}
+\newcommand{\conv}{\ast}
+\newcommand{\lieb}[2]{\left[#1, #2\right]}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\diver}{\nabla \cdot}
+\newcommand{\grad}{\nabla}
+\newcommand{\curl}{\nabla \times}
+
+% Misc Commands
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\modulus}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\| #1\right\|}
+\newcommand{\nomrl}[1]{\left\|#1\right\|_{L^2}}
+\newcommand{\normck}[1]{\left\|#1\right\|_{C^k}}
+\newcommand{\normn}[1]{\left\| #1\right\|_{n}}
+\newcommand{\st}{\,:\,}
+\newcommand{\supp}[1]{\mathrm{supp}(#1)}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\colim}[1]{\underset{#1}{\mathrm{colim\ }}}
+\newcommand{\xyrightarrow}[2]{\underset{#2}{\xrightarrow{#1}}}
+\newcommand{\poly}[2]{#1 \left[ #2 \right]}
+\newcommand{\eoe}{\begin{flushright}\rightthumbsup\end{flushright}}
+\newcommand{\lrp}[1]{\left( #1 \right)}
+\newcommand{\lrsq}[1]{\left[ #1 \right]}
+\newcommand{\Order}{\mathcal{O}}
+\newcommand{\paren}[1]{\left(#1\right)}
+\newcommand{\too}{\,\longrightarrow\,}
+\newcommand{\Oh}{\mathcal{O}}
+\newcommand{\ord}{\mathrm{ord}\,}
+\newcommand{\e}{\varepsilon}
+\newcommand{\im}{\mathrm{im}\,}
+\newcommand{\angleb}[1]{\left\langle #1 \right\rangle}
+\newcommand{\dangleb}[1]{\left\llangle #1 \right\rrangle}
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\Aut}{\mathrm{Aut}\,}
+\newcommand{\End}{\mathrm{End}\,}
+\newcommand{\Inn}{\mathrm{Inn}\,}
+\newcommand{\sqb}[1]{\left[ #1 \right]}
+\newcommand{\A}{\mathcal{A}}
+%\newcommand{\nto}{\nrightarrow}
+\newcommand{\x}{\mathbf{x}}
+\newcommand{\divides}{\,\big\vert\,}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Ell}{\mathcal{L}}
+\newcommand{\eval}[1]{\big\vert_{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\ican}{i_{\mathrm{can}}}
+\newcommand{\inc}{\mathrm{inc}\,}
+\newcommand{\tr}{\mathrm{tr}\,}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\rest}[1]{\restriction_{#1}}
+\newcommand{\vspan}{\mathrm{span}\,}
+\newcommand{\onto}{\twoheadrightarrow}
+\renewcommand{\bar}[1]{\overline{#1}}
+\newcommand{\codim}{\mathrm{codim}\,}
+\newcommand{\Nil}{\mathrm{Nil}}
+\newcommand{\lspan}{\mathrm{span}}
+\newcommand{\HOT}{\mathrm{H.O.T.}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Symbols 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\DeclareMathSymbol{\transverse}{\mathrel}{AMSa}{"74}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Theorem Styles
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheoremstyle{willthm}%		name
+     {4pt}%      			Space above
+     {4pt}%     	 		Space below
+     {}%		    	        Body font
+     {}%         			Indent amount (empty = no indent, \parindent = para indent)
+     {\bfseries}% 			Thm head font
+     {.}%        			Punctuation after thm head
+     { }%	 			Space after thm head: " " = normal interword space; %       \newline = linebreak
+     {}%         			Thm head spec (can be left empty, meaning `normal')
+
+\theoremstyle{willthm}
+\newtheorem{pr}{Problem}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}[thm]{Exercise}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{dfn}[thm]{Definition}
+\newtheorem*{prs}{Problem}
+\newtheorem*{thms}{Theorem}
+\newtheorem*{lems}{Lemma}
+\newtheorem*{cors}{Corollary}
+\newtheorem*{props}{Proposition}
+\newtheorem*{claims}{Claim}
+\newtheorem*{facts}{Fact}
+\newtheorem*{rems}{Remark}
+\newtheorem*{exs}{Exercise}
+\newtheorem*{notes}{Note}
+\newtheorem*{egs}{Example}
+\newtheorem*{dfns}{Definition}
+\newtheorem*{ntns}{Notation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Environments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newenvironment{ssprob}[1]
+{
+  \vspace{4pt}
+  {\noindent\bfseries Stein \& Shakarchi problem #1. }
+}
+{\noindent}
+
+
+\newenvironment{ssex}[1]
+{
+  \vspace{4pt}
+  {\noindent\bfseries Stein \& Shakarchi exercise #1. }
+}
+{\noindent}
+
+\newenvironment{gpex}[1]
+{
+  \vspace{4pt}
+  {\noindent\bfseries Guillemin \& Pollack exercise #1.}
+}
+{\noindent}
+
+\newenvironment{myenum}
+{\begin{enumerate}[\indent (a)]}
+{\end{enumerate}}
+
+\newenvironment{sol}
+{\begin{proof}[Solution.]}
+{\end{proof}}
+
+\newcommand{\smallvspace}{\vspace{4pt}}
